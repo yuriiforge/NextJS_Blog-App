@@ -7,6 +7,10 @@ const HomePage = (props) => {
 
   return (
     <div>
+      <Head>
+        <title>Yurii's blog</title>
+        <meta name="description" content="I post about programming" />
+      </Head>
       <Hero />
       <FeaturedPosts posts={posts} />
     </div>
