@@ -14,13 +14,24 @@
 }
 
 .content .image {
+  position: relative !important;
   margin: var(--size-4) auto;
-  width: 100%;
-  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.fixedImage {
+  width: 600px;
+  height: 300px;
+  max-width: none;
 }
 
 @media (min-width: 768px) {
   .content {
     padding: var(--size-8);
+  }
+
+  .content .image {
+    max-width: 90%; /* Slightly constrain on larger screens */
   }
 }
