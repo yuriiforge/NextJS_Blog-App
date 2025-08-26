@@ -13,25 +13,16 @@
   color: var(--color-grey-800);
 }
 
-.content .image {
-  position: relative !important;
-  margin: var(--size-4) auto;
-  display: flex;
-  justify-content: center;
-}
-
-.fixedImage {
+.markdown-image {
+  position: relative; /* required for Next.js Image fill */
   width: 600px;
   height: 300px;
-  max-width: none;
+  margin: 1rem auto;
+  border: 10px solid black;
 }
 
 @media (min-width: 768px) {
   .content {
     padding: var(--size-8);
-  }
-
-  .content .image {
-    max-width: 90%; /* Slightly constrain on larger screens */
   }
 }

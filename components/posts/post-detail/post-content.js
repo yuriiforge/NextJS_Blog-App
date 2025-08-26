@@ -7,32 +7,33 @@ const PostContent = (props) => {
   const { post } = props;
   const imagePath = `/images/posts/${post.slug}/${post.image}.png`;
 
-  const customRendereres = {
-    paragraph(paragraph) {
-      const { node } = paragraph;
-
-      if (node.children[0].type === 'image') {
-        const image = node.children[0];
-
-        return (
-          <div className={classes.image}>
-            <Image
-              className={classes.fixedImage}
-              src={image.src}
-              alt={image.alt}
-            />
-          </div>
-        );
-      }
-
-      return <p>{paragraph.children}</p>;
-    },
-  };
-
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown components={customRendereres}>
+      <ReactMarkdown
+        components={{
+          img: ({ node, ...props }) => (
+            <div
+              style={{
+                width: '600px',
+                height: '300px',
+                margin: '1rem auto',
+                position: 'relative',
+              }}
+            >
+              <img
+                {...props}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </div>
+          ),
+        }}
+      >
         {post.content}
       </ReactMarkdown>
     </article>
